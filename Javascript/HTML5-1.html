@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Testing Javascript</title>
     <script>
+        //This is a comment
         alert("Javascript is working!!!");
-        const x = 10;
-        let y = 'Some word';
-        console.log(x);
-        console.log(y.toUpperCase());
+        const num = 10;
+        let word = 'Some word';
+        console.log(num);
+        console.log(word.toUpperCase());
+        console.log(`length of ${word} is ` +word.length );
         console.error("This is an error");
-      
-      let array = new Array(1,2,3,4,5);
+        console.log(typeof(num));
+        console.log(typeof(word));
+        console.log(`Joining a sentence with ${word}`);
+     
+      let array = [1,2,3,4,5,true,'hi'];
       console.log(array[1]);
       array.push(10);
       array.unshift(99);
       console.log(array);
+      
+      const person = {
+        firstName : 'Tim',
+        lastName : 'John',
+        age : 18,
+        hobbies : new Array('music','movies','sports'),
+        address : {
+            street : '50 Up Road',
+            city : 'Downtown'
+        }
+        
+      };
+      console.log(person);
+      console.log(person.firstName);
+      console.log(person.address.street);
+      console.log(person.hobbies[1]);
+      
+      const todos = [
+        {id: 1, text: 'Wake up', isCompleted : true},
+        {id: 2, text: 'Brush Teeth', isCompleted : false},
+        {id: 3, text: 'Take Bath', isCompleted : true}
+      ];
+      console.log(todos);
+      console.log(todos[1].id);
+      console.log(JSON.stringify(todos));
+      
+      todos.forEach(function(todo){ //high order array methods take in a "function" as a paramter
+        console.log(`${todo.text}  ${todo.isCompleted}` );
+      });
+      
+      console.log(todos.map( function(todo){ // map returns a new array
+        return todo.text;
+      }));
+      
+      console.log(todos.filter(function(todo){
+       //if(todo.isCompleted ===true){ return todo;}
+       return todo.isCompleted === true;
+      }));
+      //foreach, map and filter fall into functional programming
+      
     </script>
 </head>
 <body>
