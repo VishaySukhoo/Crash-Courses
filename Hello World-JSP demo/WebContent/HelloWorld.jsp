@@ -1,7 +1,7 @@
 <%@page import="java.util.Date"%>
 <html>
 <body>
-	<h3>JPS Basic</h3>
+	<h3>JSP Basic</h3>
 
 	The time on the server is:
 	<%=new Date()%>
