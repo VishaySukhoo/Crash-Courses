@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1>JAVASCRIPT CRASH COURSE</h1>
+
+<button onclick="document.getElementById('demo').innerHTML=add();">Click to call add function</button>
+
+<p id="demo">Output of calculation here</p>
 <script>
         //This is a comment
         alert("Javascript is working!!!");
@@ -71,6 +75,7 @@
       
       function add(num1= 6, num2= 1){
         console.log(num1 + num2);
+        return num1+num2;
       }
       add();
       add(1,3);
