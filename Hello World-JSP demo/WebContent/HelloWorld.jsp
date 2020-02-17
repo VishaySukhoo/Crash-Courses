@@ -1,11 +1,6 @@
-<%@page import="java.util.Date"%>
 <html>
 <body>
-	<h3>JSP Basic</h3>
-
-	The time on the server is:
-	<%=new Date()%>
-
+	<jsp:include page="Header.html"></jsp:include>
 	<br> 10 x 2 =
 	<%=10 * 2%>
 	<br> Is 75 < 20 ?
@@ -26,5 +21,8 @@
 
 	Calling method sumNums :
 	<%=sumNums(10)%>
+
+	<jsp:include page="Footer.jsp"></jsp:include>
+
 </body>
 </html>
