@@ -34,18 +34,30 @@
       array.unshift(99);
       console.log(array);
       
-      const person = {
+      let person = {
         firstName : 'Tim',
         lastName : 'John',
         age : 18,
-        hobbies : new Array('music','movies','sports'),
+        grow(){
+            this.age++;
+        },
+        hobbies : ['music','movies','sports'],
         address : {
             street : '50 Up Road',
             city : 'Downtown'
         }
-        
+    
       };
+      
+      let copyPerson = Object.create(person);
+      let values = Object.values(person);
+      
+      console.log(values);
+      copyPerson.firstName ="copy";
+      console.log(copyPerson);
       console.log(person);
+      person.grow();
+      console.log(person.age);
       console.log(person.firstName);
       console.log(person.address.street);
       console.log(person.hobbies[1]);
