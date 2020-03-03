@@ -85,6 +85,10 @@
       add();
       add(1,3);
       
+      function writeText(){
+     return document.getElementById('p1').innerHTML="Empty cell now has text";
+}
+      
       //OOP
       //Constructor function
       function Person(firstName, lastName, dob){
