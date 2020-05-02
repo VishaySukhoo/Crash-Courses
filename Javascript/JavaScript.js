@@ -1,11 +1,12 @@
-        //This is a comment
-        alert("Javascript is working!!!");
-        const num = 19;
+//JavaScript is a client-side scripting language. A scripting language does not need to be compiled
+        alert("Javascript is working!!");
+        const num = 19; // num cannot be reassigned
         if(num === 10){// === compares value as well as data type || == compares just the value
             console.log("num is 10");} 
         else{
             console.log("num is not 10");
         }
+       
         let word = 'Some word';
         console.log("Default value of String: "+num);
         console.log("String to uppercase: "+word.toUpperCase());
@@ -23,9 +24,17 @@
       console.log("Arrays output");
       console.log(array[1]);
       console.log(array[6]);
-      array.push(10);
-      array.unshift(99);
+      array.push(10); // inserts object at the end of the array
+      array.unshift(99); //inserts objects at the beginning of the arrays
       console.log("Array display"+array);
+      
+       let arrOfNums = [1,2,3,4];
+        let sumofNums = 0;
+        for( let i=0; i<arrOfNums.length; i++){
+          sumofNums += arrOfNums[i];
+        }
+        console.log(`SumOfNums is ${sumofNums}`);
+        
       
       let person = {
         firstName : 'Tim',
