@@ -95,7 +95,7 @@
       add(1,3);
       
       function writeText(){
-     return document.getElementById('p1').innerHTML="Empty cell now has text";
+     return "Empty cell now has text";
 }
       
       //OOP
@@ -108,7 +108,7 @@
             return this.firstName;
         };
       }
-      //Prototypes
+      //Prototypes( Javascript Objects inherited methods and attributes from a prototye)
       Person.prototype.getFullName = function() {
       return `${this.firstName}    ${this.lastName}`;
       };
