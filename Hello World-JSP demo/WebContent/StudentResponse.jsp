@@ -10,7 +10,10 @@
 	<!-- OR 
 	<%=request.getParameter("firstName")%>
 	<%=request.getParameter("lastName")%>  -->
-	
+	<%=request.getParameter("country")%>
+	${param.gender }
+	<br>
+	<br>
 	Next Year, if you do not fail, you will be in
 	<%= Integer.parseInt(request.getParameter("grade")) + 1 %>
 	
