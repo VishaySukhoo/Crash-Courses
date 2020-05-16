@@ -16,7 +16,7 @@ Cookie [] cookies = request.getCookies(); //reqest an array of cookies from the 
 if(cookies !=null){
 	for(Cookie cookie : cookies){
 		if(cookie.getName().equals("myApp.name")){
-			name = cookie.getValue();
+			name = cookie.getValue(); //cookies are stored as name-value pairs
 			break;
 		}
 	}
