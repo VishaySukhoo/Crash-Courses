@@ -39,5 +39,10 @@ public class StudentServlet extends HttpServlet {
 		response.getWriter().append(request.getParameter("name")+ " "+request.getParameter("surname"));
 		//when you post a form using get, form details are exposed in your url. Always use post to be a little safer
 	}
+	
+	/*GET VS POST
+	 * GET- Good for debugging, bookmark or email url, limitations on data length
+	 * POST- Cant bookmark url, no limitations on data length
+	 */
 
 }
