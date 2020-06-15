@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<body>
+
+<h2>Vue.js</h2>
+
+<div id="app-1">
+  <ul>
+    <li v-for=" x in todos">
+    {{x.name}}  {{ x.text }}
+    </li>
+  </ul>
+</div>
+
+<script>
+myObject = new Vue({
+  el: '#app-1',
+  data: {
+    todos: [
+      { text: 'Learn JavaScript', name: 'item1: ' },
+      { text: 'Learn Vue.js', name: 'item2: ' },
+      { text: 'Build Something Awesome', name: 'item3: ' }
+    ]
+  }
+})
+</script>
+
+<div id="app-2">
+  <span v-bind:title="message">   <!-- div is a block level element, span is an inline level element !-->
+  <!-- v-bind is a directive, indicates they are special attributes provided by vue !-->
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+
+<script>
+var app2 = new Vue({
+  el: '#app-2',
+  data: {
+    message: 'You loaded this page on ' + new Date().toLocaleString()
+  }
+})
+</script>
+
+<div id="app-3">
+  <span v-if="seen===true">Now you see me</span>
+  <span v-if="seen===false">Now you don't see me</span>
+</div>
+
+<script>
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: false
+  }
+})
+</script>
+</body>
+</html>
