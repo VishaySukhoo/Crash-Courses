@@ -3,31 +3,40 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <body>
 
-<h2>Vue.js</h2>
-
+<h2>Vue.js Basic</h2>
+<!--Directives are special attributes with the v- prefix.
+A directive’s job is to reactively apply side effects to the DOM when the value of its expression changes !-->
 <div id="app-1">
   <ul>
-    <li v-for=" x in todos">
-    {{x.name}}  {{ x.text }}
+    <li v-for=" todo in todos"> 
+    {{todo.name}}  {{ todo.text }}
     </li>
   </ul>
 </div>
 
 <script>
-myObject = new Vue({
+  var x = {id: 3};
+  
+  //Creating a vue instance
+  //often ends in "vm"-viewmodel. partly inspired by mvvm pattern(model view view model)
+myObject = new Vue({ //we pass in an "options" object here
   el: '#app-1',
-  data: {
+  data: {//When a Vue instance is created, it adds all the properties found in its "data" object to Vue’s reactivity system.
+         //When the values of those properties change, the view will “react”, updating to match the new values.
     todos: [
       { text: 'Learn JavaScript', name: 'item1: ' },
       { text: 'Learn Vue.js', name: 'item2: ' },
-      { text: 'Build Something Awesome', name: 'item3: ' }
-    ]
+      { text: 'Build Something Awesome', name: x.id>1 ? 3 : 0 } //flow control won't work either, use ternary expressions
+    ]                                                           //eg. flow control: name: if(x.id>1){....}
   }
-})
+});
+myObject.todos.push({text:'learn java'});
 </script>
 
 <div id="app-2">
-  <span v-bind:title="message">   <!-- div is a block level element, span is an inline level element !-->
+  <span v-bind:title="message">
+    <!-- div is a block level element, span is an inline level element !-->
+  <!--  Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive !--> 
   <!-- v-bind is a directive, indicates they are special attributes provided by vue !-->
     Hover your mouse over me for a few seconds
     to see my dynamically bound title!
@@ -44,15 +53,111 @@ var app2 = new Vue({
 </script>
 
 <div id="app-3">
-  <span v-if="seen===true">Now you see me</span>
-  <span v-if="seen===false">Now you don't see me</span>
+  <span v-show="seen===true">Now you see me</span>
+  <span v-else>Now you don't see me</span>
+<!-- Also has support for else if !-->  
+  <template v-if="seen"> <!--Template serves as an invisible wrapper !-->
+  <p>seen is true</p>
+  <p>Now you see me</p>
+</template>
 </div>
 
+<!-- v-if vs v-show
+v-if is “real” conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+
+v-if is also lazy: if the condition is false on initial render, it will not do anything - the conditional block won’t be rendered until the condition becomes true for the first time.
+
+In comparison, v-show is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.
+
+Generally speaking, v-if has higher toggle costs while v-show has higher initial render costs. So prefer v-show if you need to toggle something very often, and prefer v-if if the condition is unlikely to change at runtime.
+!-->
 <script>
 var app3 = new Vue({
   el: '#app-3',
   data: {
-    seen: false
+    seen: true
+  }
+})
+</script>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+<script>
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  //can use "methods" which aren't cached
+  computed: { /*computed properties are cached based on their reactive dependencies.
+    A computed property will only re-evaluate when some of its reactive dependencies have changed.
+    This means as long as message has not changed,
+    multiple access to the reversedMessage computed property will immediately return the previously computed result
+    without having to run the function again.
+    Better to use computed instead of "watch" in most cases*/
+     reverseMessage: function () {
+     this.message = rev(this.message);
+     //this.message = this.message.split('').reverse().join('');
+
+    }
+  }
+})
+
+function rev(string){
+  return string.split('').reverse().join('');
+}
+</script>
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+
+<script>
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</script>
+
+<!-- The component system is another important concept in Vue, because it’s an abstraction that allows us
+to build large-scale applications composed of small, self-contained, and often reusable components.
+all Vue components are also Vue instances, and so accept the same options object
+!-->
+
+<div id="app-7">
+  <ol>
+    <!--
+      Now we provide each todo-item with the todo object
+      it's representing, so that its content can be dynamic.
+      We also need to provide each component with a "key"
+    -->
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id"
+    ></todo-item>
+  </ol>
+</div>
+
+<script>
+Vue.component('todo-item', { //this component can now be reused in html
+  props: ['todo'],  //the data you want to be passed
+  template: '<li>{{ todo.text }}</li>' //html to be rendered
+})
+
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { id: 0, text: 'Vegetables' },
+      { id: 1, text: 'Cheese' },
+      { id: 2, text: 'Whatever else humans are supposed to eat' }
+    ]
   }
 })
 </script>
