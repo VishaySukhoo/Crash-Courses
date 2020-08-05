@@ -1,0 +1,15 @@
+What is Node package manager?
+
+NPM is 2 things
+
+Online Platform: 
+- people can publish and share tools written in javascript.
+- the tools can be used in the browser(front end), server(back end), and command line
+
+- Command Line Tool: interact with the online platform i.e. Install and uninstall packages.
+- A package is a tool that someone created and uploaded to the npm online platform.
+- Every package has a version number. As packages change, version numbers change.
+- Npm lets you keep packages up to date, and even switch package versions if need be.
+
+*NPM is installed with nodeJS
+ 

@@ -8,19 +8,19 @@
         }
        
         let word = 'Some word';
-        console.log("Default value of String: "+num);
+        console.log("Default value of num: "+num);
         console.log("String to uppercase: "+word.toUpperCase());
         console.log(`The length of ${word} is ` +word.length );
-        console.error("This is a user defined error");
         console.log("The type of num is "+typeof(num));
         console.log("The type of word is "+typeof(word));
-        console.log(`Joining a sentence with ${word}`); //ES6 Statement
+        console.log(`Joining a sentence with| ${word}`); //ES6 Statement
+        console.error("This is a user defined error");
      
      let obj1 = {var1 : 's',
                 var2 : 2,
      };
-     
-      let array = [1,2,3,4,5,true,obj1,'hi']; //Arrays in javascript can hold many types of values
+     console.log("===============================================================");
+      let array = [1,2,3,4,5,true,obj1,'hi']; //Arrays in javascript can hold many types of values(primitives and objects)
       console.log("Arrays output");
       console.log(array[1]);
       console.log(array[6]);
@@ -51,10 +51,10 @@
     
       };
       
-      let copyPerson = Object.create(person);
-      let values = Object.values(person);
+      let copyPerson = Object.create(person); //copies persons properties and methods to the copyPersons prototype 
+      let values = Object.values(person); //creates an array of object values
       
-      console.log(values);
+      console.log("Object to array: "+values);
       copyPerson.firstName ="copy";
       console.log(copyPerson);
       console.log(person);
@@ -63,12 +63,13 @@
       console.log(person.firstName);
       console.log(person.address.street);
       console.log(person.hobbies[1]);
-      
+      console.log("===============================================");
       const todos = [
         {id: 1, text: 'Wake up', isCompleted : true},
         {id: 2, text: 'Brush Teeth', isCompleted : false},
         {id: 3, text: 'Take Bath', isCompleted : true}
       ];
+      console.log("Array of Objects");
       console.log(todos);
       console.log(todos[1].id);
       console.log(JSON.stringify(todos));//useful for sending data to a server
@@ -77,11 +78,12 @@
         console.log(`${todo.text}  ${todo.isCompleted}` );
       });
       
-      console.log(todos.map( function(todo){ // map returns a new array
+      console.log(todos.map( function(todo){ // map returns a new array. useful for getting certain properties
+          //return todo.isCompleted === true;
         return todo.text;
       }));
       
-      console.log(todos.filter(function(todo){
+      console.log(todos.filter(function(todo){ //usefull for getting objects based on certain property values
        //if(todo.isCompleted ===true){ return todo;}
        return todo.isCompleted === true;
       }));
@@ -97,7 +99,7 @@
       function writeText(){
      return "Empty cell now has text";
 }
-      
+      console.log("==============================")
       //OOP
       //Constructor function
       function Person(firstName, lastName, dob){
@@ -108,7 +110,7 @@
             return this.firstName;
         };
       }
-      //Prototypes( Javascript Objects inherited methods and attributes from a prototye)
+      //Prototypes( Javascript Objects inherit methods and attributes from a prototye)
       Person.prototype.getFullName = function() {
       return `${this.firstName}    ${this.lastName}`;
       };
